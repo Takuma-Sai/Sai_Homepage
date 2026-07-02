@@ -1,26 +1,269 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --surface: rgba(255, 255, 255, 0.03);
+  --foreground: #f5f5f5;
+  --muted: #737373;
+  --muted-strong: #a3a3a3;
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #0891b2;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-body), sans-serif;
+  --font-display: var(--font-inter), var(--font-body), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  line-height: 1.7;
+}
+
+a,
+button {
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 150ms ease-out,
+    opacity 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a,
+  button {
+    transition: none;
+  }
+
+  .animate-fade-up {
+    animation: none;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 50%, #7dd3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(50px, -40px) scale(1.06); }
+  66%       { transform: translate(-30px, 25px) scale(0.96); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-40px, 30px) scale(1.04); }
+  80%       { transform: translate(25px, -20px) scale(0.97); }
+}
+
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(35px, -25px) scale(1.05); }
+}
+
+.orb-1 { animation: orb-drift-1 18s ease-in-out infinite; }
+.orb-2 { animation: orb-drift-2 14s ease-in-out infinite; }
+.orb-3 { animation: orb-drift-3 22s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-1, .orb-2, .orb-3 { animation: none; }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
+/* ============================================================
+   Scroll-driven animations (主軸: CSS Scroll-Driven Animations)
+   非対応ブラウザは末尾の @supports + JS フォールバックで補完
+   ============================================================ */
+
+/* スクロール進行バー（ページ上部） */
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.scroll-progress {
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* 背景グラデーションメッシュ: スクロールで位置と色相が連続変化 */
+@keyframes mesh-shift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.05);
+    filter: hue-rotate(0deg);
+  }
+  to {
+    transform: translate3d(0, -7%, 0) scale(1.15);
+    filter: hue-rotate(70deg);
+  }
+}
+
+/* パララックス: 深度ごとに振れ幅を変える */
+@keyframes parallax-near {
+  to {
+    transform: translate3d(0, -160px, 0);
+  }
+}
+
+@keyframes parallax-mid {
+  to {
+    transform: translate3d(0, -90px, 0);
+  }
+}
+
+@keyframes parallax-far {
+  to {
+    transform: translate3d(0, 50px, 0);
+  }
+}
+
+/* Hero 背景画像のパララックス（ゆっくり沈み込み + ズーム） */
+@keyframes hero-parallax {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(0, 8%, 0) scale(1.2);
+  }
+}
+
+/* セクションのリビールイン（ビュー進入連動） */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  .bg-mesh {
+    animation: mesh-shift linear both;
+    animation-timeline: scroll(root block);
+    will-change: transform, filter;
+  }
+
+  .parallax-near {
+    animation: parallax-near linear both;
+    animation-timeline: scroll(root block);
+    will-change: transform;
+  }
+
+  .parallax-mid {
+    animation: parallax-mid linear both;
+    animation-timeline: scroll(root block);
+    will-change: transform;
+  }
+
+  .parallax-far {
+    animation: parallax-far linear both;
+    animation-timeline: scroll(root block);
+    will-change: transform;
+  }
+
+  .hero-parallax {
+    animation: hero-parallax linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 100vh;
+    will-change: transform;
+  }
+
+  .reveal {
+    animation: reveal-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 38%;
+  }
+}
+
+/* フォールバック: scroll-driven 非対応ブラウザ向け（--scroll は JS が供給, 0→1） */
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress {
+    transform: scaleX(var(--scroll, 0));
+  }
+
+  .bg-mesh {
+    transform: translate3d(0, calc(var(--scroll, 0) * -7%), 0)
+      scale(calc(1.05 + var(--scroll, 0) * 0.1));
+    filter: hue-rotate(calc(var(--scroll, 0) * 70deg));
+  }
+
+  .parallax-near {
+    transform: translate3d(0, calc(var(--scroll, 0) * -160px), 0);
+  }
+
+  .parallax-mid {
+    transform: translate3d(0, calc(var(--scroll, 0) * -90px), 0);
+  }
+
+  .parallax-far {
+    transform: translate3d(0, calc(var(--scroll, 0) * 50px), 0);
+  }
+
+  .hero-parallax {
+    transform: translate3d(0, calc(var(--scroll, 0) * 8%), 0)
+      scale(calc(1.05 + var(--scroll, 0) * 0.15));
+  }
+  /* reveal はフォールバックでは静的表示（チラつき防止） */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress,
+  .bg-mesh,
+  .parallax-near,
+  .parallax-mid,
+  .parallax-far,
+  .hero-parallax,
+  .reveal {
+    animation: none;
+    transform: none;
+    filter: none;
+  }
 }
