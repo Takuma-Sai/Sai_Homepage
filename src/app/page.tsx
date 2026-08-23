@@ -1,11 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { AboutSection } from "@/components/about-section";
-import { ContactSection } from "@/components/contact-section";
+import { GlobeCanvas } from "@/components/globe-canvas";
 import { KeywordTags } from "@/components/keyword-tags";
 import { ProfileSection } from "@/components/profile-section";
-import { SkillsSection } from "@/components/skills-section";
-import { WorksSection } from "@/components/works-section";
 import { keywords, profile } from "@/lib/site-content";
 
 export default function Home() {
@@ -13,19 +10,13 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center">
-        {/* Background image */}
+        {/* Background: rotating dot-matrix globe */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <Image
-            src="/images/image_1.png"
-            alt=""
-            fill
-            priority
-            className="hero-parallax object-cover object-center"
-          />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/65" />
-          {/* Subtle cool tint to blend with site palette */}
-          <div className="absolute inset-0 bg-sky-950/20" />
+          <div className="hero-parallax absolute inset-0">
+            <GlobeCanvas className="globe-in h-full w-full" />
+          </div>
+          {/* Vignette for text readability over the globe */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_40%_at_50%_44%,rgba(5,5,5,0.5)_0%,rgba(5,5,5,0.15)_55%,transparent_78%)]" />
           {/* Gradient fade to page background at bottom */}
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-background" />
         </div>
@@ -82,9 +73,6 @@ export default function Home() {
       <main className="relative mx-auto w-full max-w-3xl space-y-6 px-6 pb-32 sm:px-8">
         <AboutSection />
         <ProfileSection />
-        <SkillsSection />
-        <WorksSection />
-        <ContactSection />
       </main>
     </>
   );

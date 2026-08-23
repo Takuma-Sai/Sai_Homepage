@@ -24,6 +24,7 @@
 
 html {
   color-scheme: dark;
+  overflow-x: clip;
 }
 
 body {
@@ -31,6 +32,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
   line-height: 1.7;
+  overflow-x: clip;
 }
 
 a,
@@ -104,6 +106,28 @@ button {
 
 .animate-fade-up {
   animation: fade-up 0.8s ease-out both;
+}
+
+/* 地球儀キャンバスの登場（マウント直後の唐突な出現を防ぐ） */
+@keyframes globe-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.globe-in {
+  animation: globe-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .globe-in {
+    animation: none;
+  }
 }
 
 /* ============================================================
