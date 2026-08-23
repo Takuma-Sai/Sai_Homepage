@@ -45,5 +45,6 @@ next-env.d.ts
 .logs/
 .playwright-mcp/
 .tools/
+.agents/
 dev-server.log
 dev-server.err.log
