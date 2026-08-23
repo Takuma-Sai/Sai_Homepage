@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { AboutSection } from "@/components/about-section";
+import { ContactSection } from "@/components/contact-section";
 import { GlobeCanvas } from "@/components/globe-canvas";
 import { KeywordTags } from "@/components/keyword-tags";
-import { ProfileSection } from "@/components/profile-section";
+import { SkillsSection } from "@/components/skills-section";
+import { WorksSection } from "@/components/works-section";
 import { keywords, profile } from "@/lib/site-content";
 
 export default function Home() {
@@ -22,7 +24,11 @@ export default function Home() {
         </div>
 
         <div className="animate-fade-up">
-          <p className="mb-4 text-xs font-semibold tracking-[0.25em] text-muted uppercase">
+          <p className="mb-5 flex items-center justify-center gap-3 font-mono text-xs tracking-[0.32em] text-signal-pale/80 uppercase">
+            <span
+              aria-hidden="true"
+              className="size-1.5 bg-signal shadow-[0_0_12px_rgba(103,232,249,0.7)]"
+            />
             AI Engineer
           </p>
 
@@ -30,18 +36,18 @@ export default function Home() {
             Takuma Sai
           </h1>
 
-          <p className="mt-2 font-display text-xl tracking-widest text-muted-strong sm:text-2xl">
+          <p className="mt-3 text-xl tracking-[0.3em] text-muted-strong sm:text-2xl">
             崔 拓真
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
+          <div className="mt-9 flex flex-wrap justify-center gap-2">
             <KeywordTags items={keywords} />
           </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#about"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-6 py-3 text-sm text-foreground backdrop-blur-sm hover:border-cyan-500/50 hover:bg-white/8"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-6 py-3 text-sm text-foreground backdrop-blur-sm hover:border-signal/50 hover:bg-white/8"
             >
               プロフィール
               <svg
@@ -70,9 +76,11 @@ export default function Home() {
       </section>
 
       {/* Content sections */}
-      <main className="relative mx-auto w-full max-w-3xl space-y-6 px-6 pb-32 sm:px-8">
+      <main className="relative mx-auto w-full max-w-5xl space-y-28 px-6 pb-36 sm:px-8 sm:space-y-36">
         <AboutSection />
-        <ProfileSection />
+        <SkillsSection />
+        <WorksSection />
+        <ContactSection />
       </main>
     </>
   );
