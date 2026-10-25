@@ -21,7 +21,7 @@ export function WorksSection() {
               <h3 className="flex items-baseline gap-3 font-display text-lg font-medium text-balance text-foreground [word-break:auto-phrase]">
                 <span
                   aria-hidden="true"
-                  className="size-1.5 shrink-0 translate-y-[-0.2em] bg-signal-deep group-hover:bg-signal group-hover:shadow-[0_0_12px_rgba(103,232,249,0.7)]"
+                  className="size-1.5 shrink-0 translate-y-[-0.2em] bg-signal-deep group-hover:bg-signal group-hover:shadow-signal"
                 />
                 {work.title}
               </h3>

@@ -17,7 +17,7 @@ export function ContactSection() {
             Email
           </p>
           <a
-            href={`mailto:${profile.email}`}
+            href={profile.mailto}
             className="mt-2 inline-block font-mono text-xl break-all text-foreground hover:text-signal-pale sm:text-2xl"
           >
             {profile.email}
@@ -25,7 +25,7 @@ export function ContactSection() {
         </div>
 
         <a
-          href={`mailto:${profile.email}`}
+          href={profile.mailto}
           className="inline-flex items-center justify-center gap-2 rounded-full border border-signal/40 bg-signal/10 px-7 py-3.5 text-sm font-medium text-signal-pale hover:border-signal hover:bg-signal/20"
         >
           メールを書く

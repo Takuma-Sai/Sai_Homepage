@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { GlobeCanvas } from "@/components/effects/globe-canvas";
 import { profile } from "@/lib/content/site-content";
 
@@ -20,7 +19,7 @@ export function HeroSection() {
         <p className="mb-5 flex items-center justify-center gap-3 font-mono text-xs tracking-[0.32em] text-signal-pale/80 uppercase">
           <span
             aria-hidden="true"
-            className="size-1.5 bg-signal shadow-[0_0_12px_rgba(103,232,249,0.7)]"
+            className="size-1.5 bg-signal shadow-signal"
           />
           AI Engineer
         </p>
@@ -57,12 +56,12 @@ export function HeroSection() {
               />
             </svg>
           </a>
-          <Link
-            href={`mailto:${profile.email}`}
-            className="inline-flex items-center rounded-full bg-cyan-600 px-6 py-3 text-sm font-medium text-white hover:bg-cyan-500"
+          <a
+            href={profile.mailto}
+            className="inline-flex items-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-hover"
           >
             Contact
-          </Link>
+          </a>
         </div>
       </div>
     </section>

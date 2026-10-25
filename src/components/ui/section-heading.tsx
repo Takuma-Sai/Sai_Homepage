@@ -16,7 +16,7 @@ export function SectionHeading({ eyebrow, title, lead }: SectionHeadingProps) {
       <p className="flex items-center gap-3 font-mono text-[0.7rem] tracking-[0.28em] text-signal-pale/75 uppercase">
         <span
           aria-hidden="true"
-          className="size-1.5 shrink-0 bg-signal shadow-[0_0_12px_rgba(103,232,249,0.7)]"
+          className="size-1.5 shrink-0 bg-signal shadow-signal"
         />
         {eyebrow}
         <span aria-hidden="true" className="leader h-px flex-1" />

@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/ui/section-heading";
-import { aboutParagraphs, profile, profileFacts } from "@/lib/content/site-content";
+import { aboutParagraphs, profileFacts } from "@/lib/content/site-content";
 
 export function AboutSection() {
   const [lead, ...rest] = aboutParagraphs;
@@ -31,11 +31,8 @@ export function AboutSection() {
                 {fact.label}
               </dt>
               <dd className="mt-1.5 text-sm break-all text-muted-strong">
-                {fact.label === "連絡先" ? (
-                  <a
-                    href={`mailto:${profile.email}`}
-                    className="hover:text-signal-pale"
-                  >
+                {fact.href ? (
+                  <a href={fact.href} className="hover:text-signal-pale">
                     {fact.value}
                   </a>
                 ) : (

@@ -34,10 +34,10 @@ const monoFont = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: profile.name,
-    template: `%s | ${profile.name}`,
+    default: profile.fullName,
+    template: `%s | ${profile.fullName}`,
   },
-  description: `${profile.name}のページ`,
+  description: `${profile.fullName}のページ`,
 };
 
 export default function RootLayout({

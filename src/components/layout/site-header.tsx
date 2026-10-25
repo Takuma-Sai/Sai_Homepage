@@ -8,9 +8,9 @@ export function SiteHeader() {
       <div className="relative mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4 sm:px-8">
         <Link href="/" className="flex flex-col leading-tight">
           <span className="font-display font-semibold tracking-tight text-foreground">
-            Takuma Sai
+            {profile.nameEn}
           </span>
-          <span className="text-xs text-muted">{profile.name.split("（")[0]}</span>
+          <span className="text-xs text-muted">{profile.nameJa}</span>
         </Link>
         <nav className="hidden items-center gap-6 sm:flex">
           {navigation.map((item) => (

@@ -9,6 +9,7 @@
   /* 罫線はわずかに青緑を含ませ、ヒーローの地球儀と同じ光の系統に揃える */
   --line: rgba(165, 243, 252, 0.11);
   --accent: #0891b2;
+  --accent-hover: #06b6d4;
   /* 以下は globe-canvas の描画色をそのまま抜き出したもの */
   --signal: #67e8f9;
   --signal-pale: #a5f3fc;
@@ -23,9 +24,12 @@
   --color-muted-strong: var(--muted-strong);
   --color-line: var(--line);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-signal: var(--signal);
   --color-signal-pale: var(--signal-pale);
   --color-signal-deep: var(--signal-deep);
+  /* 測点マーカーの発光 */
+  --shadow-signal: 0 0 12px rgba(103, 232, 249, 0.7);
   /* 和文は各OSで最も可読性の高いゴシックを明示指定する（重い和文Webフォントは載せない） */
   --font-jp: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic",
     Meiryo, sans-serif;

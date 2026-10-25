@@ -1,17 +1,30 @@
 import type { SocialId } from "@/components/ui/social-icons";
 
+const nameJa = "崔 拓真";
+const nameEn = "Takuma Sai";
+const email = "saita3006@icloud.com";
+
 export const profile = {
-  name: "崔 拓真（Takuma Sai）",
+  nameJa,
+  nameEn,
+  fullName: `${nameJa}（${nameEn}）`,
   role: "AIエンジニア",
-  email: "saita3006@icloud.com",
+  email,
+  mailto: `mailto:${email}`,
 } as const;
 
-export const profileFacts = [
+export type ProfileFact = {
+  label: string;
+  value: string;
+  href?: string;
+};
+
+export const profileFacts: readonly ProfileFact[] = [
   { label: "職種", value: profile.role },
   { label: "経験", value: "システム開発 約4年" },
   { label: "担当工程", value: "設計・実装・運用" },
-  { label: "連絡先", value: profile.email },
-] as const;
+  { label: "連絡先", value: profile.email, href: profile.mailto },
+];
 
 export const aboutParagraphs = [
   "生成AIを使った業務アプリケーションの設計・開発をしているAIエンジニアです。",
@@ -102,7 +115,6 @@ export type SocialLink = {
   label: string;
   handle: string;
   href: string;
-  brandColor: string;
 };
 
 // X と Facebook の URL は仮置き（後で実アカウントに差し替え）
@@ -112,20 +124,17 @@ export const socialLinks: readonly SocialLink[] = [
     label: "X",
     handle: "@your-account",
     href: "https://x.com/your-account",
-    brandColor: "#000000",
   },
   {
     id: "instagram",
     label: "Instagram",
     handle: "@takuma.future.illust.gallery",
     href: "https://www.instagram.com/takuma.future.illust.gallery/",
-    brandColor: "#E4405F",
   },
   {
     id: "facebook",
     label: "Facebook",
     handle: "your-account",
     href: "https://www.facebook.com/your-account",
-    brandColor: "#1877F2",
   },
 ] as const;

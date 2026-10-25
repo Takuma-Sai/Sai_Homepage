@@ -24,7 +24,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex size-9 items-center justify-center rounded-md border border-line text-foreground hover:border-cyan-500/50"
+        className="inline-flex size-9 items-center justify-center rounded-md border border-line text-foreground hover:border-accent-hover/50"
       >
         <svg
           className="size-5"
