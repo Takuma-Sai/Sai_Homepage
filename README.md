@@ -28,10 +28,11 @@ src/
 │   ├── layout/          # ヘッダー・フッター・モバイルナビ
 │   ├── sections/        # ページの各セクション（Hero / About / Skills / Works / Contact）
 │   ├── effects/         # 地球儀キャンバス・スクロール連動の演出
-│   └── ui/              # 見出し・SNSリンクなどの部品
+│   └── ui/              # セクション枠・見出し・アイコン・SNSリンクなどの部品
 └── lib/
-    └── content/
-        └── site-content.ts  # 掲載内容のデータ
+    ├── content/
+    │   └── site-content.ts  # 掲載内容のデータ
+    └── globe/           # 地球儀の大陸データ・航路・球面計算
 ```
 
 ## 内容の更新
