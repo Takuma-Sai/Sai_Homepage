@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sai Homepage
 
-## Getting Started
+AIエンジニア 崔 拓真（Takuma Sai）のポートフォリオサイト。1 ページ構成。
 
-First, run the development server:
+## 技術スタック
+
+- Next.js 16（App Router）/ React 19 / TypeScript
+- Tailwind CSS v4
+- ヒーローの地球儀は Canvas 2D の自前実装（外部ライブラリなし）
+
+## 開発
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Windows で `.tools/node-v24.14.0-win-x64/` に置いた Node を使う場合は `dev.ps1` / `lint.ps1` / `build.ps1` を実行する（`.tools/` は git 管理外）。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ディレクトリ構成
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                 # ルーティング（layout.tsx, page.tsx, globals.css）
+├── components/
+│   ├── layout/          # ヘッダー・フッター・モバイルナビ
+│   ├── sections/        # ページの各セクション（Hero / About / Skills / Works / Contact）
+│   ├── effects/         # 地球儀キャンバス・スクロール連動の演出
+│   └── ui/              # 見出し・SNSリンクなどの部品
+└── lib/
+    └── content/
+        └── site-content.ts  # 掲載内容のデータ
+```
 
-## Learn More
+## 内容の更新
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+プロフィール・スキル・実績・SNS リンクなどの掲載内容は、すべて `src/lib/content/site-content.ts` に集約している。文言の変更はこのファイルだけを編集すればよい。

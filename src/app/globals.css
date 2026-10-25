@@ -241,18 +241,6 @@ button {
   }
 }
 
-/* セクションのリビールイン（ビュー進入連動） */
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    transform: translateY(48px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @supports (animation-timeline: scroll()) {
   .scroll-progress {
     animation: progress-grow linear both;
@@ -289,12 +277,6 @@ button {
     animation-range: 0 100vh;
     will-change: transform;
   }
-
-  .reveal {
-    animation: reveal-in linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 38%;
-  }
 }
 
 /* フォールバック: scroll-driven 非対応ブラウザ向け（--scroll は JS が供給, 0→1） */
@@ -324,7 +306,6 @@ button {
     transform: translate3d(0, calc(var(--scroll, 0) * 8%), 0)
       scale(calc(1.05 + var(--scroll, 0) * 0.15));
   }
-  /* reveal はフォールバックでは静的表示（チラつき防止） */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -333,8 +314,7 @@ button {
   .parallax-near,
   .parallax-mid,
   .parallax-far,
-  .hero-parallax,
-  .reveal {
+  .hero-parallax {
     animation: none;
     transform: none;
     filter: none;

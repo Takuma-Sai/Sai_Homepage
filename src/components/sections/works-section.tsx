@@ -15,10 +15,10 @@ export function WorksSection() {
         {works.map((work) => (
           <li
             key={work.title}
-            className="group grid gap-x-10 gap-y-4 border-b border-line py-7 md:grid-cols-[17rem_1fr]"
+            className="group grid gap-x-10 gap-y-4 border-b border-line py-7 md:grid-cols-[19rem_1fr]"
           >
             <div>
-              <h3 className="flex items-baseline gap-3 font-display text-lg font-medium text-balance text-foreground">
+              <h3 className="flex items-baseline gap-3 font-display text-lg font-medium text-balance text-foreground [word-break:auto-phrase]">
                 <span
                   aria-hidden="true"
                   className="size-1.5 shrink-0 translate-y-[-0.2em] bg-signal-deep group-hover:bg-signal group-hover:shadow-[0_0_12px_rgba(103,232,249,0.7)]"

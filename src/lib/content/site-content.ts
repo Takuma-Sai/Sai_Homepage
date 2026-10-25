@@ -13,14 +13,6 @@ export const profileFacts = [
   { label: "連絡先", value: profile.email },
 ] as const;
 
-export const keywords = [
-  "Python",
-  "TypeScript",
-  "AWS",
-  "Amazon Bedrock",
-  "Dify",
-] as const;
-
 export const aboutParagraphs = [
   "生成AIを使った業務アプリケーションの設計・開発をしているAIエンジニアです。",
   "保険・年金システム（COBOL）の開発と保守からキャリアを始め、現在は TypeScript と Python で、金融・保険・小売向けのAIチャットボットや診断ロジックを開発しています。",
@@ -69,7 +61,7 @@ export type Work = {
 // 新しい順に並べる
 export const works: readonly Work[] = [
   {
-    title: "自動車保険の問い合わせAIチャットボット",
+    title: "自動車保険の問い合わせAI",
     period: "2026.09 – 2026.10",
     description:
       "保険会社向け問い合わせチャットボットの、管理画面や有人チャット画面などを詳細設計から実装まで担当。",
