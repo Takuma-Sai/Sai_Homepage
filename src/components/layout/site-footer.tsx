@@ -1,5 +1,5 @@
-import { SocialLinks } from "@/components/social-links";
-import { profile, socialLinks } from "@/lib/site-content";
+import { SocialLinks } from "@/components/ui/social-links";
+import { profile, socialLinks } from "@/lib/content/site-content";
 
 export function SiteFooter() {
   return (

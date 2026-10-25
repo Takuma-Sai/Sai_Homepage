@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Zen_Kaku_Gothic_New } from "next/font/google";
-import { ScrollBackground } from "@/components/scroll-background";
-import { ScrollFallback } from "@/components/scroll-fallback";
-import { ScrollProgress } from "@/components/scroll-progress";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { profile } from "@/lib/site-content";
+import { ScrollBackground } from "@/components/effects/scroll-background";
+import { ScrollFallback } from "@/components/effects/scroll-fallback";
+import { ScrollProgress } from "@/components/effects/scroll-progress";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { profile } from "@/lib/content/site-content";
 import "./globals.css";
 
 // 本文の欧文。和文ゴシックと合わせて設計された字面なので、

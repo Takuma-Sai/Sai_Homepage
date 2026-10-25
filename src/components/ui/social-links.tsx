@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import { socialIcons } from "@/components/social-icons";
-import type { SocialLink } from "@/lib/site-content";
+import { socialIcons } from "@/components/ui/social-icons";
+import type { SocialLink } from "@/lib/content/site-content";
 
 type SocialLinksProps = {
   items: readonly SocialLink[];

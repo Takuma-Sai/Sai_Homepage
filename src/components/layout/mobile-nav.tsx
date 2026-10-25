@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { navigation } from "@/lib/site-content";
+import { navigation } from "@/lib/content/site-content";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);

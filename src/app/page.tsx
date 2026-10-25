@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { AboutSection } from "@/components/about-section";
-import { ContactSection } from "@/components/contact-section";
-import { GlobeCanvas } from "@/components/globe-canvas";
-import { KeywordTags } from "@/components/keyword-tags";
-import { SkillsSection } from "@/components/skills-section";
-import { WorksSection } from "@/components/works-section";
-import { keywords, profile } from "@/lib/site-content";
+import { AboutSection } from "@/components/sections/about-section";
+import { ContactSection } from "@/components/sections/contact-section";
+import { GlobeCanvas } from "@/components/effects/globe-canvas";
+import { KeywordTags } from "@/components/ui/keyword-tags";
+import { SkillsSection } from "@/components/sections/skills-section";
+import { WorksSection } from "@/components/sections/works-section";
+import { keywords, profile } from "@/lib/content/site-content";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
-import { SectionHeading } from "@/components/section-heading";
-import { SocialLinks } from "@/components/social-links";
-import { profile, socialLinks } from "@/lib/site-content";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { SocialLinks } from "@/components/ui/social-links";
+import { profile, socialLinks } from "@/lib/content/site-content";
 
 export function ContactSection() {
   return (

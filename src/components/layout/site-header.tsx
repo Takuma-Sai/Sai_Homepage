@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { MobileNav } from "@/components/mobile-nav";
-import { navigation, profile } from "@/lib/site-content";
+import { MobileNav } from "@/components/layout/mobile-nav";
+import { navigation, profile } from "@/lib/content/site-content";
 
 export function SiteHeader() {
   return (

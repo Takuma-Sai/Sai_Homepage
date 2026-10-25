@@ -1,5 +1,5 @@
-import { SectionHeading } from "@/components/section-heading";
-import { skillGroups } from "@/lib/site-content";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { skillGroups } from "@/lib/content/site-content";
 
 export function SkillsSection() {
   return (
@@ -7,7 +7,7 @@ export function SkillsSection() {
       <SectionHeading
         eyebrow="Skills"
         title="技術スタック"
-        lead="課題に応じて手段を選べるように、基盤・言語・エージェント設計をひと続きで扱えるようにしています。"
+        lead="業務で使っている主な技術です。"
       />
 
       {/* 点描の下地に載せたデータ面 */}

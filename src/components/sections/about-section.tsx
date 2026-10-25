@@ -1,5 +1,5 @@
-import { SectionHeading } from "@/components/section-heading";
-import { aboutParagraphs, profile, profileFacts } from "@/lib/site-content";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { aboutParagraphs, profile, profileFacts } from "@/lib/content/site-content";
 
 export function AboutSection() {
   const [lead, ...rest] = aboutParagraphs;

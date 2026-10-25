@@ -1,5 +1,5 @@
-import { SectionHeading } from "@/components/section-heading";
-import { works } from "@/lib/site-content";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { works } from "@/lib/content/site-content";
 
 export function WorksSection() {
   return (
@@ -7,7 +7,7 @@ export function WorksSection() {
       <SectionHeading
         eyebrow="Works"
         title="実績"
-        lead="設計から実装・運用までを一貫して担当した取り組みです。"
+        lead="担当した主なプロジェクトです（新しい順）。"
       />
 
       {/* 目録形式。左に対象、右に内容を置いて縦に読み下せるようにする */}
@@ -25,6 +25,9 @@ export function WorksSection() {
                 />
                 {work.title}
               </h3>
+              <p className="mt-2 pl-[1.125rem] font-mono text-xs tracking-wide text-signal-pale/70">
+                {work.period}
+              </p>
               <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5 pl-[1.125rem]">
                 {work.tags.map((tag) => (
                   <li
