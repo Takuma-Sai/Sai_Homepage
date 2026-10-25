@@ -1,3 +1,5 @@
+import { SignalDot } from "@/components/ui/signal-dot";
+
 type SectionHeadingProps = {
   eyebrow: string;
   title: string;
@@ -14,10 +16,7 @@ export function SectionHeading({ eyebrow, title, lead }: SectionHeadingProps) {
   return (
     <header>
       <p className="flex items-center gap-3 font-mono text-[0.7rem] tracking-[0.28em] text-signal-pale/75 uppercase">
-        <span
-          aria-hidden="true"
-          className="size-1.5 shrink-0 bg-signal shadow-signal"
-        />
+        <SignalDot />
         {eyebrow}
         <span aria-hidden="true" className="leader h-px flex-1" />
       </p>

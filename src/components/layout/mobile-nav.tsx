@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { CloseIcon, MenuIcon } from "@/components/ui/icons";
 import { navigation } from "@/lib/content/site-content";
 
 export function MobileNav() {
@@ -26,21 +27,7 @@ export function MobileNav() {
         onClick={() => setOpen((value) => !value)}
         className="inline-flex size-9 items-center justify-center rounded-md border border-line text-foreground hover:border-accent-hover/50"
       >
-        <svg
-          className="size-5"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          aria-hidden="true"
-        >
-          {open ? (
-            <path d="M6 6l12 12M18 6L6 18" />
-          ) : (
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          )}
-        </svg>
+        {open ? <CloseIcon className="size-5" /> : <MenuIcon className="size-5" />}
       </button>
 
       {open && (

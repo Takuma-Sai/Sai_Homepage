@@ -100,17 +100,6 @@ button {
     opacity 160ms ease;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  a,
-  button {
-    transition: none;
-  }
-
-  .animate-fade-up {
-    animation: none;
-  }
-}
-
 ::selection {
   background: var(--accent);
   color: #fff;
@@ -144,10 +133,6 @@ button {
 .orb-2 { animation: orb-drift-2 14s ease-in-out infinite; }
 .orb-3 { animation: orb-drift-3 22s ease-in-out infinite; }
 
-@media (prefers-reduced-motion: reduce) {
-  .orb-1, .orb-2, .orb-3 { animation: none; }
-}
-
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -179,16 +164,22 @@ button {
   animation: globe-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .globe-in {
-    animation: none;
-  }
-}
-
 /* ============================================================
    Scroll-driven animations (主軸: CSS Scroll-Driven Animations)
-   非対応ブラウザは末尾の @supports + JS フォールバックで補完
+   非対応ブラウザは @supports not + JS フォールバックで補完
    ============================================================ */
+
+/* 振れ幅。scroll-driven 版とフォールバック版の両方がここを参照する */
+:root {
+  --scroll-base-scale: 1.05;
+  --mesh-shift-y: -7%;
+  --mesh-zoom: 0.07;
+  --hero-shift-y: 8%;
+  --hero-zoom: 0.15;
+  --parallax-near: -160px;
+  --parallax-mid: -90px;
+  --parallax-far: 50px;
+}
 
 /* スクロール進行バー（ページ上部） */
 @keyframes progress-grow {
@@ -205,43 +196,45 @@ button {
   transform: scaleX(0);
 }
 
-/* 背景グラデーションメッシュ: スクロールで位置と色相が連続変化 */
+/* 背景グラデーションメッシュ: スクロールで位置が連続変化 */
 /* 色相は動かさない。回すと背景が青紫へ流れて地球儀の青緑と喧嘩するため */
 @keyframes mesh-shift {
   from {
-    transform: translate3d(0, 0, 0) scale(1.05);
+    transform: translate3d(0, 0, 0) scale(var(--scroll-base-scale));
   }
   to {
-    transform: translate3d(0, -7%, 0) scale(1.12);
+    transform: translate3d(0, var(--mesh-shift-y), 0)
+      scale(calc(var(--scroll-base-scale) + var(--mesh-zoom)));
   }
 }
 
 /* パララックス: 深度ごとに振れ幅を変える */
 @keyframes parallax-near {
   to {
-    transform: translate3d(0, -160px, 0);
+    transform: translate3d(0, var(--parallax-near), 0);
   }
 }
 
 @keyframes parallax-mid {
   to {
-    transform: translate3d(0, -90px, 0);
+    transform: translate3d(0, var(--parallax-mid), 0);
   }
 }
 
 @keyframes parallax-far {
   to {
-    transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, var(--parallax-far), 0);
   }
 }
 
-/* Hero 背景画像のパララックス（ゆっくり沈み込み + ズーム） */
+/* ヒーロー背景のパララックス（ゆっくり沈み込み + ズーム） */
 @keyframes hero-parallax {
   from {
-    transform: translate3d(0, 0, 0) scale(1.05);
+    transform: translate3d(0, 0, 0) scale(var(--scroll-base-scale));
   }
   to {
-    transform: translate3d(0, 8%, 0) scale(1.2);
+    transform: translate3d(0, var(--hero-shift-y), 0)
+      scale(calc(var(--scroll-base-scale) + var(--hero-zoom)));
   }
 }
 
@@ -290,29 +283,43 @@ button {
   }
 
   .bg-mesh {
-    transform: translate3d(0, calc(var(--scroll, 0) * -7%), 0)
-      scale(calc(1.05 + var(--scroll, 0) * 0.07));
+    transform: translate3d(0, calc(var(--scroll, 0) * var(--mesh-shift-y)), 0)
+      scale(calc(var(--scroll-base-scale) + var(--scroll, 0) * var(--mesh-zoom)));
   }
 
   .parallax-near {
-    transform: translate3d(0, calc(var(--scroll, 0) * -160px), 0);
+    transform: translate3d(0, calc(var(--scroll, 0) * var(--parallax-near)), 0);
   }
 
   .parallax-mid {
-    transform: translate3d(0, calc(var(--scroll, 0) * -90px), 0);
+    transform: translate3d(0, calc(var(--scroll, 0) * var(--parallax-mid)), 0);
   }
 
   .parallax-far {
-    transform: translate3d(0, calc(var(--scroll, 0) * 50px), 0);
+    transform: translate3d(0, calc(var(--scroll, 0) * var(--parallax-far)), 0);
   }
 
   .hero-parallax {
-    transform: translate3d(0, calc(var(--scroll, 0) * 8%), 0)
-      scale(calc(1.05 + var(--scroll, 0) * 0.15));
+    transform: translate3d(0, calc(var(--scroll, 0) * var(--hero-shift-y)), 0)
+      scale(calc(var(--scroll-base-scale) + var(--scroll, 0) * var(--hero-zoom)));
   }
 }
 
+/* 動きを減らす設定では、すべての演出をここで一括して止める */
 @media (prefers-reduced-motion: reduce) {
+  a,
+  button {
+    transition: none;
+  }
+
+  .animate-fade-up,
+  .globe-in,
+  .orb-1,
+  .orb-2,
+  .orb-3 {
+    animation: none;
+  }
+
   .scroll-progress,
   .bg-mesh,
   .parallax-near,

@@ -1,13 +1,11 @@
-import { SectionHeading } from "@/components/ui/section-heading";
-import { aboutParagraphs, profileFacts } from "@/lib/content/site-content";
+import { Section } from "@/components/ui/section";
+import { aboutParagraphs, profileFacts, sections } from "@/lib/content/site-content";
 
 export function AboutSection() {
   const [lead, ...rest] = aboutParagraphs;
 
   return (
-    <section id="about" className="scroll-mt-24">
-      <SectionHeading eyebrow="About" title="自己紹介" />
-
+    <Section meta={sections.about}>
       <div className="mt-10 grid gap-x-12 gap-y-10 md:grid-cols-[1fr_15rem]">
         <div>
           <p className="text-lg leading-[1.9] text-pretty text-foreground sm:text-xl">
@@ -43,6 +41,6 @@ export function AboutSection() {
           ))}
         </dl>
       </div>
-    </section>
+    </Section>
   );
 }

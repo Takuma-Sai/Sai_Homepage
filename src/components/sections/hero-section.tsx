@@ -1,7 +1,11 @@
 import { GlobeCanvas } from "@/components/effects/globe-canvas";
-import { profile } from "@/lib/content/site-content";
+import { ArrowDownIcon } from "@/components/ui/icons";
+import { SignalDot } from "@/components/ui/signal-dot";
+import { hero, profile, sections } from "@/lib/content/site-content";
 
 export function HeroSection() {
+  const [headlineFirst, headlineSecond] = hero.headline;
+
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center">
       {/* Background: rotating dot-matrix globe */}
@@ -17,44 +21,28 @@ export function HeroSection() {
 
       <div className="animate-fade-up">
         <p className="mb-5 flex items-center justify-center gap-3 font-mono text-xs tracking-[0.32em] text-signal-pale/80 uppercase">
-          <span
-            aria-hidden="true"
-            className="size-1.5 bg-signal shadow-signal"
-          />
-          AI Engineer
+          <SignalDot />
+          {hero.eyebrow}
         </p>
 
         {/* 名前はヘッダー、技術は Skills にあるので、ここでは何をしている人かだけを示す */}
         <h1 className="gradient-text text-3xl leading-tight font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-          AIの「できそう」を、
+          {headlineFirst}
           <br />
-          「動いている」に。
+          {headlineSecond}
         </h1>
 
         <p className="mx-auto mt-6 text-sm leading-relaxed text-pretty text-muted-strong [word-break:auto-phrase] sm:text-base">
-          課題整理から運用まで、手を離さずに形にする。
+          {hero.tagline}
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="#about"
+            href={`#${sections.about.id}`}
             className="inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-6 py-3 text-sm text-foreground backdrop-blur-sm hover:border-signal/50 hover:bg-white/8"
           >
             プロフィール
-            <svg
-              className="size-4"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              aria-hidden="true"
-            >
-              <path
-                d="M8 3v10M3 8l5 5 5-5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ArrowDownIcon className="size-4" />
           </a>
           <a
             href={profile.mailto}

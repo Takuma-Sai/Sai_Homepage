@@ -1,15 +1,10 @@
-import { SectionHeading } from "@/components/ui/section-heading";
-import { skillGroups } from "@/lib/content/site-content";
+import { Section } from "@/components/ui/section";
+import { SignalDot } from "@/components/ui/signal-dot";
+import { sections, skillGroups } from "@/lib/content/site-content";
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="scroll-mt-24">
-      <SectionHeading
-        eyebrow="Skills"
-        title="技術スタック"
-        lead="業務で使っている主な技術です。"
-      />
-
+    <Section meta={sections.skills}>
       {/* 点描の下地に載せたデータ面 */}
       <div className="dot-field mt-10 grid gap-10 border border-line p-7 sm:grid-cols-3 sm:p-9">
         {skillGroups.map((group) => (
@@ -23,10 +18,7 @@ export function SkillsSection() {
                   key={item}
                   className="flex items-baseline gap-2.5 text-sm text-muted-strong"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="size-1 shrink-0 translate-y-[-0.15em] bg-signal-deep"
-                  />
+                  <SignalDot size="sm" tone="deep" className="translate-y-[-0.15em]" />
                   {item}
                 </li>
               ))}
@@ -34,6 +26,6 @@ export function SkillsSection() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

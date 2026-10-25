@@ -103,12 +103,46 @@ export const works: readonly Work[] = [
   },
 ] as const;
 
-export const navigation = [
-  { label: "About", href: "/#about" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Works", href: "/#works" },
-  { label: "Contact", href: "/#contact" },
-] as const;
+export const hero = {
+  eyebrow: "AI Engineer",
+  headline: ["AIの「できそう」を、", "「動いている」に。"],
+  tagline: "課題整理から運用まで、手を離さずに形にする。",
+} as const;
+
+export type SectionMeta = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  lead?: string;
+};
+
+// 並び順がそのままナビゲーションの順になる
+export const sections = {
+  about: { id: "about", eyebrow: "About", title: "自己紹介" },
+  skills: {
+    id: "skills",
+    eyebrow: "Skills",
+    title: "技術スタック",
+    lead: "業務で使っている主な技術です。",
+  },
+  works: {
+    id: "works",
+    eyebrow: "Works",
+    title: "実績",
+    lead: "担当した主なプロジェクトです（新しい順）。",
+  },
+  contact: {
+    id: "contact",
+    eyebrow: "Contact",
+    title: "お問い合わせ",
+    lead: "制作やAI活用のご相談は、メールからお気軽にどうぞ。",
+  },
+} as const satisfies Record<string, SectionMeta>;
+
+export const navigation = Object.values(sections).map((section) => ({
+  label: section.eyebrow,
+  href: `/#${section.id}`,
+}));
 
 export type SocialLink = {
   id: SocialId;

@@ -1,15 +1,10 @@
-import { SectionHeading } from "@/components/ui/section-heading";
-import { works } from "@/lib/content/site-content";
+import { Section } from "@/components/ui/section";
+import { SignalDot } from "@/components/ui/signal-dot";
+import { sections, works } from "@/lib/content/site-content";
 
 export function WorksSection() {
   return (
-    <section id="works" className="scroll-mt-24">
-      <SectionHeading
-        eyebrow="Works"
-        title="実績"
-        lead="担当した主なプロジェクトです（新しい順）。"
-      />
-
+    <Section meta={sections.works}>
       {/* 目録形式。左に対象、右に内容を置いて縦に読み下せるようにする */}
       <ul className="mt-10 border-t border-line">
         {works.map((work) => (
@@ -19,10 +14,7 @@ export function WorksSection() {
           >
             <div>
               <h3 className="flex items-baseline gap-3 font-display text-lg font-medium text-balance text-foreground [word-break:auto-phrase]">
-                <span
-                  aria-hidden="true"
-                  className="size-1.5 shrink-0 translate-y-[-0.2em] bg-signal-deep group-hover:bg-signal group-hover:shadow-signal"
-                />
+                <SignalDot tone="deep" className="translate-y-[-0.2em]" />
                 {work.title}
               </h3>
               <p className="mt-2 pl-[1.125rem] font-mono text-xs tracking-wide text-signal-pale/70">
@@ -45,6 +37,6 @@ export function WorksSection() {
           </li>
         ))}
       </ul>
-    </section>
+    </Section>
   );
 }
